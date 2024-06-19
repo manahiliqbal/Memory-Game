@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: rgb(122, 171, 211);
+}
+.wrap{
+    height: 320px;
+    width: 320px;
+    background: rgb(232, 239, 245);
+    padding: 25px;
+    border-radius: 8px;
+}
+.cards, .card, .back-side,
+.cards, .card, .front-side{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cards{
+    height: 90%;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.cards .card{
+    cursor: pointer;
+    position: relative;
+    perspective: 800px;
+    height: calc(100%/ 4 - 10px);
+    width: calc(100%/ 4 - 10px);
+}
+.card.shake{
+    animation: shake 0.35s ease-in-out;
+}
+@keyframes shake {
+    0%, 100%{
+        transform: translateX(0);
+    }
+    20%{
+        transform: translateX(-13px);
+    }
+    40%{
+        transform: translateX(13px);
+    }
+    60%{
+        transform: translateX(-8px);
+    }
+    80%{
+        transform: translateX(8px);
+    }
+}
+.cards .card .back-side,
+.cards .card .front-side{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: white;
+    border: 3px solid black;
+    user-select: none;
+    pointer-events: none;
+    border-radius: 5px;
+    transition: transform 0.25s linear;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+} 
+.cards .card .front-side{
+    background-color: rgb(122, 171, 211);
+}
+.card .front-side span
+{
+    color: black;
+    
+    font-size: 35px;
+} 
+.card .back-side
+{
+    transform: rotateY(-180deg);
+}   
+.card .back-side img{
+    max-width: 40px;   
+}
+.card.flip .front-side{
+    transform: rotateY(180deg);
+}
+.card.flip .back-side{
+    transform: rotateY(0);
+}
+.button-div{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.controls-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(122, 171, 211);
+    top: 0;
+}
+button {
+    border: none;
+    border-radius: 0.3em;
+    padding: 1em 1.5em;
+    cursor: pointer;
+}
+#stop {
+    font-size: 1.1em;
+    display: block;
+    margin: 1.1em auto 0 auto;
+    background-color: #000000;
+    color: #ffffff; 
+}
+.controls-container button {
+    font-size: 1.3em;
+    box-shadow: 0 0.6em 2em rgba(86, 66, 0, 0.2);
+}
+.hide {
+    display: none;
+}
+#result {
+    text-align: center;
+}
+#result h2 {
+    font-size: 2.0em;
+}
+#result h4 {
+   font-size: 1.2em;
+   margin: 0.6em 0 1em 0;
+}
